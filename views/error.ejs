@@ -1,11 +1,18 @@
-<% layout("/layouts/boilerplate") %>
+<% layout('/layouts/boilerplate') %>
+
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error:</strong> Invalid input detected.
-        <p>
-                <li><%= err.status %></li>
-                <li><%= err.message %></li>
-                <li><%= err.stack %></li>
-        </p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>Error:</strong> Invalid input detected.
+    <ul>
+        <% if (err.status) { %>
+            <li>Status Code: <%= err.status %></li>
+        <% } %>
+        <% if (err.message) { %>
+            <li>Message: <%= err.message %></li>
+        <% } %>
+        <% if (err.stack) { %>
+            <li>Stack Trace:</li>
+            <pre><%= err.stack %></pre>
+        <% } %>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-      
